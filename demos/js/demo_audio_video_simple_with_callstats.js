@@ -2,8 +2,8 @@ var selfEasyrtcid = "";
 var selfRoomName = "";
 var callinitiator = false;
 
-var appId = "175240362";
-var appSecret = "Gvd126EUWQheaWQX9mwmeWIbzvs=";
+var appId = "";
+var appSecret = "";
 var callStats;
 
 function csInitCallback (err, msg){
