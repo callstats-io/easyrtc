@@ -1,6 +1,6 @@
 var selfEasyrtcid = "";
 var selfRoomName = "";
-var callinitiator = false;
+var callInitiator = false;
 
 var appId = "";
 var appSecret = "";
@@ -16,12 +16,12 @@ function connect() {
 
     callStats = new callstats($,io,jsSHA);
     easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
-    easyrtc.setOnCall( function(easyrtcid, slot) {
-        console.log("call with " + easyrtcid + " established");
-        if (!callinitiator) {
-            var pc = easyrtc.getPeerConnectionByUserId(easyrtcid);
+    easyrtc.setOnCall( function(easyrtcId, slot) {
+        console.log("call with " + easyrtcId + " established");
+        if (!callInitiator) {
+            var pc = easyrtc.getPeerConnectionByUserId(easyrtcId);
             console.log("Pc is ",pc);
-            callStats.addNewFabric(pc, easyrtcid, callStats.fabricUsage.multiplex, selfRoomName);
+            callStats.addNewFabric(pc, easyrtcId, callStats.fabricUsage.multiplex, selfRoomName);
         }
     });
  }
@@ -56,7 +56,7 @@ function convertListToButtons (roomName, data, isPrimary) {
 
 function performCall(otherEasyrtcid) {
     easyrtc.hangupAll();
-    callinitiator = true;
+    callInitiator = true;
     var successCB = function(user, msg) {
         console.log("success ",user,msg);
         var pc = easyrtc.getPeerConnectionByUserId(otherEasyrtcid);
